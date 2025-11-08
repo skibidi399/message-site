@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Message board</title></head>
+<body>
+  <h1>Messages</h1>
+  <pre id="messages"></pre>
+  <script>
+    async function load() {
+      const r = await fetch('/messages.json');
+      const msgs = await r.json();
+      document.getElementById('messages').textContent = JSON.stringify(msgs, null, 2);
+    }
+    load();
+    setInterval(load, 5000);
+  </script>
+</body>
+</html>
